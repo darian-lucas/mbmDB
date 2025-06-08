@@ -1,5 +1,5 @@
+require('dotenv').config();
 const express = require("express");
-const dotenv = require("dotenv");
 const connectDB = require("./src/config/db");
 const userRoutes = require("./src/routes/users");
 //Bổ sung search
@@ -28,7 +28,6 @@ const nodemailer = require("nodemailer");
 const cors = require("cors");
 // const { applyTimestamps } = require('./src/models/CouponModel');
 
-dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 app.set("port", PORT);
