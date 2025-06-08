@@ -29,8 +29,7 @@ const cors = require("cors");
 // const { applyTimestamps } = require('./src/models/CouponModel');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
-app.set("port", PORT);
+const port = 3001;
 
 // Middleware
 app.use(express.json());
@@ -64,6 +63,6 @@ app.use("/api/breadcrum", breadCrumRoutes);
 
 require("./src/middleware/cron");
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`🚀 Server chạy tại: http://localhost:${PORT}`);
+app.listen(port, "0.0.0.0", () => {
+  console.log(`🚀 Server chạy tại: http://localhost:${port}`);
 });
