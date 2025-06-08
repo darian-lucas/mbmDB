@@ -1,21 +1,21 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const connectDB = require('./src/config/db');
-const userRoutes = require('./src/routes/users');
+const express = require("express");
+const dotenv = require("dotenv");
+const connectDB = require("./src/config/db");
+const userRoutes = require("./src/routes/users");
 //Bổ sung search
 const searchRoutes = require("./src/routes/search");
-const categoryRoutes = require('./src/routes/category');
-const productRoutes = require('./src/routes/product');
-const postRoutes = require('./src/routes/post')
-const favoriteRoutes = require('./src/routes/favorite');
-const postCommentRoutes = require('./src/routes/postComment');
-const orderRoutes = require('./src/routes/order');
-const paymentMethodRoutes = require('./src/routes/paymentMethods');
-const bannerRoutes = require('./src/routes/banner');
-const couponRoutes = require('./src/routes/coupon');
-const emailRouter = require('./src/routes/emailRoutes')
-const tableRoutes = require('./src/routes/table');
-const registerRoutes = require('./src/routes/register');
+const categoryRoutes = require("./src/routes/category");
+const productRoutes = require("./src/routes/product");
+const postRoutes = require("./src/routes/post");
+const favoriteRoutes = require("./src/routes/favorite");
+const postCommentRoutes = require("./src/routes/postComment");
+const orderRoutes = require("./src/routes/order");
+const paymentMethodRoutes = require("./src/routes/paymentMethods");
+const bannerRoutes = require("./src/routes/banner");
+const couponRoutes = require("./src/routes/coupon");
+const emailRouter = require("./src/routes/emailRoutes");
+const tableRoutes = require("./src/routes/table");
+const registerRoutes = require("./src/routes/register");
 const authRoutes = require("./src/routes/authRoutes");
 const emailCustomerRouter = require("./src/routes/emailCustomerRoutes");
 const breadCrumRoutes = require("./src/routes/breadCrum");
@@ -31,45 +31,40 @@ const cors = require("cors");
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
-app.set('port', PORT);
+app.set("port", PORT);
 
 // Middleware
 app.use(express.json());
 app.use(cors());
-app.use('/images', express.static('public/images'));
+app.use("/images", express.static("public/images"));
 app.use(express.json({ type: "application/json", charset: "utf-8" }));
 
 // Kết nối DB
 connectDB();
 
 // Định tuyến
-app.use('/api/user', userRoutes);
+app.use("/api/user", userRoutes);
 //Bổ sung search
 app.use("/api", searchRoutes);
-app.use('/api', postRoutes);
-app.use('/api/categories', categoryRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/favorite', favoriteRoutes);
-app.use('/api/cmt', postCommentRoutes);
+app.use("/api", postRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/favorite", favoriteRoutes);
+app.use("/api/cmt", postCommentRoutes);
 //Bổ sung email gửi thông tin (liên hệ, faq)
 app.use("/api/emailCustomer", emailCustomerRouter);
-app.use('/api/email',emailRouter);
-app.use('/api/orders', orderRoutes);
-app.use('/api/payments', paymentMethodRoutes);
-app.use('/api/coupons', couponRoutes);
-app.use('/api/banners', bannerRoutes);
-app.use('/api/tables', tableRoutes);
-app.use('/api/registers', registerRoutes);
+app.use("/api/email", emailRouter);
+app.use("/api/orders", orderRoutes);
+app.use("/api/payments", paymentMethodRoutes);
+app.use("/api/coupons", couponRoutes);
+app.use("/api/banners", bannerRoutes);
+app.use("/api/tables", tableRoutes);
+app.use("/api/registers", registerRoutes);
 app.use("/api/auth", authRoutes);
-app.use('/api/breadcrum',breadCrumRoutes);
+app.use("/api/breadcrum", breadCrumRoutes);
 
 require("./src/middleware/cron");
 
-app.listen(PORT, () => {
-    console.log(`🚀 Server chạy tại: http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 Server chạy tại: http://localhost:${PORT}`);
 });
-
-
-
-
-
