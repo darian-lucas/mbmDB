@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 const express = require("express");
 const connectDB = require("./src/config/db");
 const userRoutes = require("./src/routes/users");
@@ -62,6 +62,10 @@ app.use("/api/auth", authRoutes);
 app.use("/api/breadcrum", breadCrumRoutes);
 
 require("./src/middleware/cron");
+
+app.get("/", (req, res) => {
+  res.send("Server is running");
+});
 
 app.listen(port, "0.0.0.0", () => {
   console.log(`🚀 Server chạy tại: http://localhost:${port}`);
