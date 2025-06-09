@@ -181,7 +181,7 @@ const sendResetPasswordEmail = async (email) => {
     expiresIn: "5m",
   });
 
-  const resetLink = `https://mbmfood.vercel.app/reset-password/${token}`;
+  const resetLink = `https://www.mbmfood.store/reset-password/${token}`;
 
   const htmlContent = resetPasswordTemplate(resetLink);
 
