@@ -166,7 +166,7 @@ class OrderService {
   
       // Tạo một array chứa các promises của từng yêu cầu API
       const productPromises = productIds.map((id) =>
-        axios.get(`http://localhost:3001/api/products/${id}`)
+        axios.get(`http://13.213.6.233:3001/api/products/${id}`)
       );
   
       // Chờ tất cả các promises hoàn thành
